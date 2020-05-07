@@ -1,0 +1,58 @@
+{% extends 'bootstrap/base.html' %}
+{% block content %}
+
+<div class="container" style="background-color: lightseagreen; margin-top: 20px;">
+    <div class="jumbotron text-center " style="background-color:lightpink;" >
+        <h2>Language Converter</h2>
+        <p></p>
+    </div>
+    
+</div>
+
+<div class="container">
+    <form action="{{url_for('analyse')}}" method="POST" id="myForm">
+        <label for="">Enter Your Text Below</label>
+        <textarea name="rawtext" id="" cols="20" rows="5" class="form-control" required></textarea>
+        <div class="form-group">
+            <label for="choose">Choose Language</label>
+            <select class="form-control" name="choose" required>
+              <option value="">Select Language</option>
+              <option value="hindi">Hindi</option>
+              <option value="english">English</option>
+              <option value="bengali">Bengali</option>
+              <option value="french">French</option>
+              <option value="german">German</option>
+              <option value="italian">Italian</option>
+              <option value="japanese">Japanese</option>
+              <option value="latin">Latin</option>
+              <option value="nepali">Nepali</option>
+              <option value="oriya">Oriya</option>
+              <option value="punjabi">Punjabi</option>
+              <option value="Portuguese">Portuguese</option>
+              <option value="Russian">Russian</option>
+              <option value="Spanish">Spanish</option>
+              <option value="urdu">Urdu</option>
+              <option value="arbic">Arbic</option>
+              <option value="chinese">Chinese</option>
+            </select>
+          </div>
+        <input type="submit"  name="" id="" value="Submit" class="btn btn-primary mt-3">
+        <input type="reset"  name="" id="" value="Clear" class="btn btn-danger mt-3">
+        <a href="{{url_for('index')}}" type="button" class="btn btn-success">Reset</a>
+    </form>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <p> <span style="color: brown;">{{rcv_text}}</span></p>
+        <p style="color: green;">{{lang}}</p>
+    </div>
+    
+</div>
+
+
+
+
+
+
+{% endblock %}
