@@ -1,6 +1,6 @@
 {% extends 'bootstrap/base.html' %}
 {% block content %}
-
+<script type="text/javascript" src="https://code.responsivevoice.org/responsivevoice.js"></script>
 <div class="container" style="background-color: lightseagreen; margin-top: 20px;">
     <div class="jumbotron text-center " style="background-color:lightpink;" >
         <h2>Language Converter</h2>
@@ -12,7 +12,7 @@
 <div class="container">
     <form action="{{url_for('analyse')}}" method="POST" id="myForm">
         <label for="">Enter Your Text Below</label>
-        <textarea name="rawtext" id="" cols="20" rows="5" class="form-control" required></textarea>
+        <textarea name="rawtext" id="txt" cols="20" rows="5" class="form-control" required></textarea>
         <div class="form-group">
             <label for="choose">Choose Language</label>
             <select class="form-control" name="choose" required>
@@ -37,12 +37,20 @@
             </select>
           </div>
         <input type="submit"  name="" id="" value="Submit" class="btn btn-primary mt-3">
-        <input type="reset"  name="" id="" value="Clear" class="btn btn-danger mt-3">
-        <a href="{{url_for('index')}}" type="button" class="btn btn-success">Reset</a>
+        <input type="reset"  name="" id="" value="Clear" class="btn btn-danger mt-3" style="margin-left: 50px;">
+        <a href="{{url_for('index')}}" type="button" class="btn btn-success" style="margin-left: 50px;">Reset</a>
+        <button type="button" onclick="textSpeak();" class="btn btn-primary ml-3" style="margin-left: 50px;">
+            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-volume-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+          <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+          <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707z"/>
+          <path fill-rule="evenodd" d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+          </svg>
+        </button>
     </form>
 </div>
 
-<div class="container">
+<div class="container" style="margin-top:30px;">
     <div class="jumbotron">
         <p> <span style="color: brown;">{{rcv_text}}</span></p>
         <p style="color: green;">{{lang}}</p>
@@ -51,7 +59,13 @@
 </div>
 
 
-
+<script>
+    function textSpeak(){
+      var text=document.getElementById('txt').value;
+        responsiveVoice.speak(text, 'US English Female');
+     
+    }
+  </script>
 
 
 
